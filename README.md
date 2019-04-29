@@ -18,11 +18,11 @@ To use the script, first make a copy of it somewhere you can run it with python.
 Once these have been changed, open up a Terminal (Mac) or Command Prompt (Windows) window, navigate to the directory containing make_fieldmap_graner.py (unless you’ve added it to your system path already), type “python -m make_fieldmap_graner”, and hit Enter. The script should take on the order of a minute to finish.
 
 ### Putting the Results Into FSL:
-FSL needs the following to do B0 inhomogeneity correction…
-**Fieldmap:** the “fieldmap_NUM_final.nii.gz” file created by make_fieldmap_graner.py
-**Fieldmap mag:** the “mag_short_brain.nii.gz” file created by make_fieldmap_graner.py
-**Effective EPI echo spacing:** this is reported as “echospacing” in the fMRI you want to correct (NOT THE FIELDMAP) .bxh file. It seems to be reported in secE-6, so a value of “468” in the .bxh would be entered as “0.468” in the FSL GUI.
-**EPI TE:** this is just the TE of the fMRI (AGAIN, NOT THE FIELDMAP), which is also reported in the .bxh file as, appropriately, “te”. This value looks to be reported in ms in the .bxh file.
+FSL needs the following to do B0 inhomogeneity correction…  
+**Fieldmap:** the “fieldmap_NUM_final.nii.gz” file created by make_fieldmap_graner.py  
+**Fieldmap mag:** the “mag_short_brain.nii.gz” file created by make_fieldmap_graner.py  
+**Effective EPI echo spacing:** this is reported as “echospacing” in the fMRI you want to correct (NOT THE FIELDMAP) .bxh file. It seems to be reported in secE-6, so a value of “468” in the .bxh would be entered as “0.468” in the FSL GUI.  
+**EPI TE:** this is just the TE of the fMRI (AGAIN, NOT THE FIELDMAP), which is also reported in the .bxh file as, appropriately, “te”. This value looks to be reported in ms in the .bxh file.  
 **Unwarp direction:** This will potentially vary from EPI sequence to EPI sequence. Try “y” first. If that causes the resulting corrected image to look MORE warped, try “-y”.
 
 ### Looking at the Effects of Correction:

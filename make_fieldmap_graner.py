@@ -1,6 +1,6 @@
 #This script will create a fieldmap using FSL. It is specific to the format we're getting out of BIAC.
 #It is also written to work, not to be pretty. There are more elegant ways to do this stuff, but
-#this way works for now.
+#this will work for now.
 
 #Steps:
 #   1) Pull out magnitude image for short TE and magnitude image for long TE (3dTcat)
@@ -13,19 +13,21 @@
 #   7) Subtract unwrapped phase images to create fieldmap (FSLMATHS)
 #   8) Smooth and despike fieldmap (FUGUE)
 
+##Author: John Graner, Ph.D., LaBar Lab, Center for Cognitive Neuroscience, Duke University, Durham, NC
+
 import os
 
 #---------CHANGE THESE THINGS--------------------
-subject_id = '21906'
-b0_scan_id = '005'
-biac_scanner_number = '5'
-te_short = '0.007'
+subject_id = '21906'        #BIAC exam number
+b0_scan_id = '005'          #BIAC scan ID of the B0 fieldmap acquisition
+biac_scanner_number = '5'   #e.g. 5 or 6
+te_short = '0.007'          #Only change these if you altered the TEs used in the acquisition.
 te_long = '0.009'
 #Make this the directory containing each subject directory
-base_b0_dir = '/here/there/everywhere/Graner/Data/{}'.format(subject_id)
+base_b0_dir = '/your/study/Data/{}'.format(subject_id)
 
 smoothing = '6.0'
-delete_existing = True
+delete_existing = True      #Set to True to delete any pre-existing output, set to False to stop instead
 #-------------------------------------------------
 
 te_dif = float(te_long) - float(te_short)
